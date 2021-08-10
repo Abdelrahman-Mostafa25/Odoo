@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 
-class it_courses(models.Model):
-    _name = 'it_courses.it_courses'
-    _description = 'it_courses.it_courses'
+class open_academy(models.Model):
+    _name = 'open_academy.open_academy'
+    _description = 'open_academy.open_academy'
 
-    name = fields.Char(string="Titel", required=True)
+    name = fields.Char(string="Course Name", required=True)
     description = fields.Text()
+    Levels = fields.Text()
 
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
+#
 #
 #     @api.depends('value')
 #     def _value_pc(self):

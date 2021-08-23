@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 {
     'name': "Open Academy",
 
@@ -22,14 +22,17 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'board'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/openacademy.xml',
-        'views/views.xml',
-        'views/templates.xml',
+        #'views/session_board.xml',   #error in file  C:\custome_module\Openacademy\open_academy\views\session_board.xml
+        'reports/session_report.xml',
+        'views/partner.xml',
+
+
     ],
     # only loaded in demonstration mode
     'demo': [

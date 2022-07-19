@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+         <record model="ir.ui.view" id="crm_edite_view">
+            <field name="name">CRM Edite Model</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="related_patient_id"/>
+                </field>
+                <field name="vat" position="attributes">
+                    <attribute name="required">True</attribute>
+                </field>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="crm_edite_tree">
+            <field name="name">CRM Edite Model</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="email" position="after">
+                    <field name="website"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

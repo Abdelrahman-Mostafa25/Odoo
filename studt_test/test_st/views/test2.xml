@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_id2">
+            <field name="name">test_form</field>
+            <field name="model">test2.test2</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <!-- view content: <form>, <tree>, <graph>, ... -->
+                <form string="test form">
+                    <group>
+                        <field name="name"/>
+                        <field name="Start_date"/>
+                        <field name="Duration"/>
+                        <field name="Seats" />
+                        <field name="o2m"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="action_list2_ideas">
+            <field name="name">Test2_study</field>
+            <field name="res_model">test2.test2</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help"
+                   type="html">  <!-- This code is responsible to create smiling face when the first obj will be create in any views -->
+                <p class="o_view_nocontent_smiling_face">
+                    Create the first test
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu3" parent="menu1" name="test4" action="action_list2_ideas"/>
+
+
+    </data>
+</odoo>

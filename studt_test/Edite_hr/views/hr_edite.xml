@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hr_edite_view">
+            <field name="name">Hr Edite Model</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="gender" position="after">
+                    <field name="army_cir"/>
+                </field>
+                <xpath expr="//page[1]" position="inside">
+                    <group>
+                        <field name="army_cir"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="hms_normal_security" model="res.groups">
+            <field name="name">HMS Normal User</field>
+        </record>
+        <record id="hms_manger_security" model="res.groups">
+            <field name="name">HMS Manger User</field>
+        <!--<field name="implied_ids" eval="[(4,ref('hms_normal_security'))]"/>-->
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="form_id">
+            <field name="name">view.form</field>
+            <field name="model">patient.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                  <sheet>
+                      <header>
+                        <button string="Undetermined" type="object" name="selection" attrs="{'invisible':[('states','!=','b')]}" />
+                        <button string="Good" type="object" name="selection"  attrs="{'invisible':[('states','!=','u')]}"/>
+                        <button string="Faie" type="object" name="selection" attrs="{'invisible':[('states','!=','g')]}"/>
+                        <button string="serious" type="object" name="selection" attrs="{'invisible':[('states','!=','f')]}"/>
+                        <button string="Back" type="object" name="selection" attrs="{'invisible':[('states','!=','s')]}"/>
+                        <field name="states" widget="statusbar" />
+                    </header>
+                      <group>
+                          <group string="info1">
+                                <field name="name"/>
+                                <field name="lastname"/>
+                                <field name="email"/>
+                                <field name="bd"/>
+                                <field name="cr_ratio"  attrs="{'required':[('pcr','=',True)]}"/>
+                                <field name="address" />
+                          </group>
+                           <group string="info2">
+                                <field name="Blood_type"/>
+                                <field name="pcr"/>
+                                <field name="upload"/>
+                                <field name="age"/>
+                                <field name="department_id" domain="[('Is_opened','=',True)]" />
+                                <field name="department_cap"/>
+                                <field name="doctor_id" widget="many2many_tags"
+                                       attrs="{'readonly':[('department_id','=',False)]}" groups="hms.hms_manger_security"/>
+                          </group>
+                      </group>
+                        <notebook>
+                            <page string="History">
+                               <group>
+                                    <field name="history"  attrs="{'invisible':[('age','&lt;',50)]}"/>
+                               </group>
+                            </page>
+                            <page string="Log">
+                                    <field name="log"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tree_id">
+            <field name="name">view.tree</field>
+            <field name="model">patient.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="lastname"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="search_id">
+            <field name="name">view.search</field>
+            <field name="model">patient.patient</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="lastname"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="patients">
+            <field name="name">Hms_Patients</field>
+            <field name="res_model">patient.patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+         <menuitem id="main_manu"  name="HMS" />
+        <menuitem id="patients-menu" parent="main_manu" name="Patients"
+        action="patients" />
+    </data>
+</odoo>

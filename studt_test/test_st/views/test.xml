@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_id">
+            <field name="name">test.form</field>
+            <field name="model">test_st.test_st</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="One" type="object" name="one_st" attrs="{'invisible':[('selection','!=',False)]}" />
+                        <button string="Two" type="object" name="one_st" attrs="{'invisible':[('selection','!=','1')]}" />
+                        <button string="Three" type="object" name="one_st" attrs="{'invisible':[('selection','!=','2')]}"/>
+                        <button string="Back" type="object" name="one_st" attrs="{'invisible':[('selection','!=','3')]}"/>
+                        <field name="selection" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="description"/>
+                            <field name="Boole"/>
+                            <field name="Integer"/>
+                            <field name="float_num"/>
+                        </group>
+                        <group>
+                            <field name="upload"/>
+                            <field name="date"/>
+                            <field name="dateTime_v"/>
+                            <field name="m2o"/>
+                            <field name="salary_b" />
+                            <field name="salary_buy"/>
+                            <field name="win"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="About">
+                           <field name="html"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="tree_test">
+            <field name="name">test2_tree</field>
+            <field name="model">test_st.test_st</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="test Tree">
+                    <field name="name"/>
+                    <field name="Boole"/>
+                    <field name="Integer"/>
+                    <field name="float_num"/>
+                    <field name="description"/>
+                     <field name="m2o"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record model="ir.actions.act_window" id="action_list_ideas">
+            <field name="name">Test_study</field>
+            <field name="res_model">test_st.test_st</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help"
+                   type="html">  <!-- This code is responsible to create smiling face when the first obj will be create in any views -->
+                <p class="o_view_nocontent_smiling_face">
+                    Create the first test
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_main" name="testst"/>
+        <menuitem id="menu1" parent="menu_main" name="test2"/>
+        <menuitem id="menu2" parent="menu1" name="test3" action="action_list_ideas"/>
+
+
+    </data>
+</odoo>

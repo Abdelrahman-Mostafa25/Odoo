@@ -6,7 +6,7 @@
             <field name="name">open_academy.form</field>
             <field name="model">open_academy.open_academy</field>
             <field name="arch" type="xml">
-
+                <!--Course form View-->
                 <form string="Course form">
                     <group>
                         <field name="name"/>
@@ -20,7 +20,7 @@
                         </page>
                         <page string="session">
                             <field name="session_id">
-                                <tree string="Registered session">
+                                <tree string="Registered session" editable="bottom">
                                     <field name="name"/>
                                     <field name="instructor_id"/>
                                     <field name="Start_date"/>
@@ -34,12 +34,13 @@
             </field>
         </record>
 
+        <!--Course tree View-->
 
         <record model="ir.ui.view" id="Academy_tree_view">
             <field name="name">open_academy.tree</field>
             <field name="model">open_academy.open_academy</field>
             <field name="arch" type="xml">
-                <tree string="Course list">
+                <tree string="Course list" >
                     <field name="name"/>
                     <field name="responsible_id"/>
                     <field name="description"/>
@@ -47,6 +48,7 @@
             </field>
         </record>
 
+        <!--Course search View-->
 
         <record model="ir.ui.view" id="Academy_search">
             <field name="name">open_academy.search</field>
@@ -65,11 +67,12 @@
             </field>
         </record>
 
+        <!-- menu items and action -->
 
         <record model="ir.actions.act_window" id="action_list_course">
             <field name="name">Courses</field>
             <field name="res_model">open_academy.open_academy</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,search</field>
             <field name="context" eval="{'search_default_my_courses':1}"/>
             <field name="help" type="html">
                 <p class="0_view_nocontent_smiling_face">Create The First Course</p>
@@ -84,6 +87,7 @@
             <field name="name">session.form</field>
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
+                <!--  form Session view-->
                 <form string="Session form">
 
                     <group string="General">
@@ -104,13 +108,13 @@
                 </form>
             </field>
         </record>
-
+        <!-- tree Session view-->
         <record model="ir.ui.view" id="session_tree_view">
             <field name="name">session.tree</field>
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
                 <tree string="session list" decoration-info="duration&lt;5"
-                      decoration-danger="duration&gt;15">
+                      decoration-danger="duration&gt;15" >
                     <field name="name"/>
                     <field name="course_id"/>
                     <field name="duration" invisible="1"/>
@@ -119,7 +123,7 @@
             </field>
         </record>
 
-        <!-- calendar view-->
+        <!-- calendar session view-->
         <record model="ir.ui.view" id="session_calendar_view">
             <field name="name">session.calendar</field>
             <field name="model">openacademy.session</field>
@@ -130,7 +134,7 @@
             </field>
         </record>
 
-
+        <!-- graph Session view-->
         <record model="ir.ui.view" id="openacademy_session_graph_view">
             <field name="name">session.graph</field>
             <field name="model">openacademy.session</field>
@@ -151,8 +155,8 @@
         <menuitem id="Session_menu" parent="menu_open_academy" name="Session" action="session_list_course"/>
 
 
-
-       <record model="ir.ui.view" id="form_view_wizard">
+        <!-- wizard view-->
+        <record model="ir.ui.view" id="form_view_wizard">
             <field name="name">Wizard.form</field>
             <field name="model">openacademy.wizard</field>
             <field name="arch" type="xml">

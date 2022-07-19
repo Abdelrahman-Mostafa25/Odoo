@@ -1,0 +1,92 @@
+<odoo>
+    <data>
+        <template id="hms_patient_reports">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h1 style="color:red;text-align:left;font-weight: bold;">Patient Status Report</h1>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.upload"
+                                          t-options='{"widget": "image","style":"width: 160px;height:160px;margin-bottom: 25px;"}'/>
+                                </div>
+                                "
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span style="font-size:30px;">Name :
+                                        <span t-field="o.name"/>
+                                    </span>
+                                </div>
+                                <div class="col-6">
+                                    <span style="text-align:right;font-size:30px;">Birth date :
+                                        <span t-field="o.bd"/>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <span style="text-align:left;font-size:30px;">Age :
+                                        <span t-field="o.age"/>
+                                    </span>
+                                </div>
+                                <div class="col-6">
+                                    <span style="text-align:right;font-size:30px;">PCR :
+                                        <span t-field="o.pcr"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span style="text-align:left;font-size:30px;">Department :
+                                        <span t-field="o.department_id"/>
+                                    </span>
+                                </div>
+                                <div class="col-6">
+                                    <span style="text-align:right;font-size:30px;">Blood Type :
+                                        <span t-field="o.Blood_type"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span style="text-align:left;font-size:30px;">Doctors :
+                                        <span t-field="o.doctor_id"/>
+                                    </span>
+                                </div>
+                                <div class="col-6">
+                                    <span style="text-align:right;font-size:30px;">Email :
+                                        <span t-field="o.email"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <h4 style="text-align:center;margin-top: 25px;color:red;font-size:30px">Log History</h4>
+                            <table class="table table-striped">
+                                <tr style="background-color:DodgerBlue;font-size:30px;color:white;font-weight: bold;">
+                                    <th>User</th>
+                                    <th>Date</th>
+                                    <th>Info</th>
+                                </tr>
+                                <tr t-foreach='o.log' t-as='line' style="font-size:25px;">
+                                    <td>
+                                        <span t-field="line.create_uid"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.create_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.description"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
